@@ -1,0 +1,114 @@
+{>"layout" /}
+<style >
+
+body{
+	 background: url('../img/recordBook.jpg') no-repeat center center fixed;
+	 background-size: cover;
+
+	}
+</style>
+
+<body>
+ <section id="search">
+    <form action="/users/search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="term" placeholder="User1,User2">
+        <input type="submit" value="Search">
+    </form>
+</section>  
+<br><br>
+ <div id = table>
+  	<table>
+		  <tr>
+		    <th>Name</th>
+		    <th>Age</th>
+		    <th>Job</th>
+		    <th style= "width:15rem ; text-align: right">Operation</th>
+		  </tr>
+	  {#users} 
+		  <tr>
+		    <td>{name}</td>
+		    <td>{age}</td>
+		    <td>{job}</td>
+		    <td> 
+		    <button class="btn btn-danger delete-user" data-id="{id}">
+			 		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			 	Delete</button>       
+         <button class ="btn edit-user" data-toggle="modal" data-target="#editFormModal" data-id="{id}" data-name="{name}" data-age="{age}" data-job="{job}" style="background-color: darkseagreen; margin-right: 0.3rem">
+           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+         Update</button>
+		  </tr>
+		   </td>
+	  {/users}
+
+     </table>
+     <br>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal" style="width: 13rem; height:3rem; border-radius: 4rem; margin-right: 41rem; ">
+		Add A New User
+	</button>
+    </div>  
+
+	<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	    	<form method="post" action="users/add"+id>
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel" style="margin-left: -17rem; margin-right: 12rem">Add User</h4>
+			      </div>
+			      <div class="modal-body">
+			        	<div class="form-group">
+				        	<label>User Name</label>
+				        	<input type="text" class="form-control" name="name" />
+				        </div>
+				        <div class="form-group">
+				        	<label>Age</label>
+				        	<input type="number" class="form-control" name="age" />
+				        </div>
+				        <div class="form-group">
+				        	<label>Job</label>
+				        	<textarea class="form-control" name="job"></textarea>
+				        </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <input type="submit" class="btn btn-primary" value="Save" />
+			      </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+	<div class="modal fade" id="editFormModal" tabindex="-1" role="dialog" aria-labelledby="EditFormModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <form method='post', action='/users/edit'/>
+	    	  <input type="hidden" id="edit-form-id" name ="id" />
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel" style="margin-left: -17rem; margin-right: 12rem">Edit User</h4>
+			      </div>
+			      <div class="modal-body">
+			        	<div class="form-group">
+				        	<label>User Name</label>
+				        	<input type="text" class="form-control" name="name" id="edit-form-name" />
+				        </div>
+				        <div class="form-group">
+				        	<label>Age</label>
+				        	<input type="number" class="form-control" name= 'age' id="age" />
+				        </div>
+				        <div class="form-group">
+				        	<label>Job</label>
+				        	<textarea class="form-control" name="job" id="edit-form-job"></textarea>
+				        </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <input type="submit" class="btn btn-primary" value="Save" />
+			      </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+	
+</body>

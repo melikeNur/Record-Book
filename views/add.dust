@@ -1,0 +1,16 @@
+{>"layout" /}
+<style >
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+body{
+	 background: url('../img/cat.jpg') no-repeat center center fixed;
+	 background-size: cover;
+	  font-family: 'Lobster',sans-serif
+
+	}
+</style>
+<body>
+<h1 style="text-align: center;">
+Please Fill All The Areas</h1>
+
+</body>
+</html>
